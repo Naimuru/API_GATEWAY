@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 import strawberry
 from strawberry.asgi import GraphQL
-from resolvers.CommentsResolver import QueryComment
+from strawberry.schema.config import StrawberryConfig
+from schemas.CommentsSchema import Query
+import operator
 app = FastAPI()
 
 
@@ -9,7 +11,19 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
-schema= strawberry.Schema(query=QueryComment)
+
+
+def default_resolver(root, field):
+    try:
+        return operator.getitem(root, field)
+    except KeyError:
+        return getattr(root, field)
+
+config = StrawberryConfig(
+    default_resolver=default_resolver
+)
+
+schema= strawberry.Schema(query=Query,config=config)
 
 
 app=FastAPI()
