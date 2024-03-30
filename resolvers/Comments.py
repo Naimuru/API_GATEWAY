@@ -1,6 +1,6 @@
 import typing
 import strawberry
-from schemas import Comment,get_comments
+from schemas.CommentsSchema import Comment,get_comments
 @strawberry.type
 class QueryComment:
     comments: typing.List[Comment] = strawberry.field(resolver=get_comments)
