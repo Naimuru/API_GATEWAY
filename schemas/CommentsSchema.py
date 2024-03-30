@@ -18,8 +18,3 @@ def get_comments():
             itemMusicId="cerati239028942",
         ),
     ]
-@strawberry.type
-#comment push
-class QueryComment:
-    comments: typing.List[Comment] = strawberry.field(resolver=get_comments)
-schema= strawberry.Schema(query=QueryComment)
