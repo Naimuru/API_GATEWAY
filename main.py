@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import strawberry
 from strawberry.asgi import GraphQL
-from resolvers.Comments import QueryComment
+from resolvers.CommentsResolver import QueryComment
 app = FastAPI()
 
 

@@ -1,5 +1,6 @@
 import typing
 import strawberry
+from utilities import *
 @strawberry.type
 class Comment:
     _id: str
@@ -8,13 +9,11 @@ class Comment:
     parentId: str
     itemMusicId:str
     #Handle likes and dislikes
+@strawberry.input
+class CommentInput:
+    userId: str
+    content: str
 def get_comments():
     return [
-        Comment(
-            _id= "28393314k",
-            userId= "3272432jkelads",
-            content= "This is a comment example",
-            parentId= "parent18290483209",
-            itemMusicId="cerati239028942",
-        ),
+        generalRequest("http://localhost:8080/api/v1/comments","GET")
     ]
