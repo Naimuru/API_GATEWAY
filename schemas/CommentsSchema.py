@@ -19,6 +19,7 @@ def get_comments():
         ),
     ]
 @strawberry.type
+#comment push
 class QueryComment:
     comments: typing.List[Comment] = strawberry.field(resolver=get_comments)
 schema= strawberry.Schema(query=QueryComment)
