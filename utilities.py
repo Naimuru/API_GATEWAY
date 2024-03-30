@@ -1,6 +1,6 @@
 import requests
 import os
-def generalRequestz(url, method, body=None, full_response=False):
+def generalRequest(url, method, body=None, full_response=False):
     headers = {'Content-Type': 'application/json'}
     if os.getenv('SHOW_URLS'):
         print(url)
@@ -16,10 +16,6 @@ def generalRequestz(url, method, body=None, full_response=False):
             response = requests.delete(url, headers=headers)
         else:
             raise ValueError(f'Invalid method: {method}')
-
-        if full_response:
-            return response
-        else:
-            return response.json()
+        return response.json()
     except requests.exceptions.RequestException as err:
         return str(err)
