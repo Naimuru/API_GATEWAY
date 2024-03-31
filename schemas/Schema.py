@@ -1,5 +1,11 @@
 import strawberry
-from .CommentsSchema import QueryComment,QueryUser
+from .CommentsSchema import CommentQueries,CommentMutations
+from .UserSocialSchema import UserSocialQueries,UserSocialMutations
 @strawberry.type
-class Query(QueryComment):
+class Query(CommentQueries,
+            UserSocialQueries):
+    pass
+@strawberry.type
+class Mutation(CommentMutations
+               ,UserSocialMutations):
     pass
