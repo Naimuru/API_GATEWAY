@@ -4,7 +4,7 @@ from utilities import *
 from ms_types.UserSocialTypes import *
 from server import USERSOCIAL_URL_BASE
 @strawberry.type
-class UserSocialQueries:
+class QueryUserSocial:
     @strawberry.field
     def users(self) ->typing.List[User]:
         return generalRequest(USERSOCIAL_URL_BASE+"getAllUsers",GET)
@@ -18,7 +18,7 @@ class UserSocialQueries:
     def userByUserName(self,userName:str)->User:
         return  generalRequest(USERSOCIAL_URL_BASE+"user/?userName={}".format(userName),GET)
 @strawberry.type
-class UserSocialMutations:
+class MutationsUserSocial:
     @strawberry.mutation
     def createUser(self,user:UserInput)->User:
         return generalRequest(USERSOCIAL_URL_BASE+"user/",POST,body=strawberry.asdict(user))

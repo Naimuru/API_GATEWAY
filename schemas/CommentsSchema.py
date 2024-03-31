@@ -7,7 +7,7 @@ from ms_types.CommentsTypes import *
 
 
 @strawberry.type
-class CommentQueries:
+class QueryComment:
         
     @strawberry.field
     def comment(self,id:str)-> Comment:
@@ -30,7 +30,7 @@ class CommentQueries:
     
     
 @strawberry.type
-class CommentMutations:
+class MutationsComment:
 
     @strawberry.mutation
     def updateComment(self,id:str,comment:CommentUpdate) -> Comment:
