@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import strawberry
 from strawberry.asgi import GraphQL
 from strawberry.schema.config import StrawberryConfig
-from schemas.CommentsSchema import Query
+from schemas.CommentsSchema import Query,Mutations
 import operator
 app = FastAPI()
 
@@ -20,11 +20,10 @@ def default_resolver(root, field):
         return getattr(root, field)
 
 config = StrawberryConfig(
-    default_resolver=default_resolver
+    default_resolver=default_resolver,
 )
 
-schema= strawberry.Schema(query=Query,config=config)
-
+schema= strawberry.Schema(query=Query,mutation=Mutations,config=config)
 
 app=FastAPI()
 @app.get("/")
