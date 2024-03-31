@@ -21,7 +21,7 @@ def generalRequest(url, method, body=None, full_response=False):
         elif method == PUT:
             response = requests.put(url, json=body, headers=headers)
         elif method == DELETE:
-            response = requests.delete(url, headers=headers)
+            response = requests.delete(url, headers=headers,json=body)
         else:
             raise ValueError(f'Invalid method: {method}')
         return response.json()
