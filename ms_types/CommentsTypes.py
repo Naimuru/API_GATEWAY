@@ -9,7 +9,8 @@ class Comment:
     itemMusicId:str
     likes: typing.List[str]
     dislikes: typing.List[str]
-
+    createdAt: str
+    updatedAt: str
 
 @strawberry.input
 class CommentUpdate:
@@ -20,3 +21,14 @@ class CommentInput:
     userId: str
     content: str
     itemMusicId: str
+
+@strawberry.input
+class ReplyInput:
+    content: str
+    userId: str
+    itemMusicId: typing.Optional[str]=None
+    parentId: typing.Optional[str]=None
+@strawberry.type
+class DeleteCommentResponse:
+    acknowledged: str
+    deletedCount: int

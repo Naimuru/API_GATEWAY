@@ -3,45 +3,11 @@ import strawberry
 import datetime
 from utilities import *
 from server import API_URL
-#from types.CommentTypes import Comment
-
-
+from ms_types.CommentsTypes import *
 
 
 @strawberry.type
-class Comment:
-    _id: str
-    userId: str
-    content: str
-    parentId: typing.Optional[str]
-    itemMusicId:str
-    likes: typing.List[str]
-    dislikes: typing.List[str]
-    createdAt: str
-    updatedAt: str
-
-@strawberry.input
-class CommentUpdate:
-    content: str
-
-@strawberry.input
-class CommentInput:
-    userId: str
-    content: str
-    itemMusicId: str
-
-@strawberry.input
-class ReplyInput:
-    content: str
-    userId: str
-    itemMusicId: typing.Optional[str]=None
-    parentId: typing.Optional[str]=None
-@strawberry.type
-class DeleteCommentResponse:
-    acknowledged: str
-    deletedCount: int
-@strawberry.type
-class Query:
+class QueryComment:
         
     @strawberry.field
     def comment(self,id:str)-> Comment:
@@ -87,3 +53,7 @@ class Mutations:
     def deleteComment(self,id:str) -> DeleteCommentResponse:
         response=generalRequest(API_URL+"comments/{0}".format(id),DELETE)
         return response
+    
+@strawberry.type
+class QueryUser:
+    pass

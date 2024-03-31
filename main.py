@@ -2,7 +2,8 @@ from fastapi import FastAPI
 import strawberry
 from strawberry.asgi import GraphQL
 from strawberry.schema.config import StrawberryConfig
-from schemas.CommentsSchema import Query,Mutations
+from schemas.CommentsSchema import Mutations
+from schemas.Schema import Query
 import operator
 app = FastAPI()
 
