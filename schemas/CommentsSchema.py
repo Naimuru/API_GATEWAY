@@ -30,7 +30,7 @@ class QueryComment:
     
     
 @strawberry.type
-class Mutations:
+class MutationsComment:
 
     @strawberry.mutation
     def updateComment(self,id:str,comment:CommentUpdate) -> Comment:
