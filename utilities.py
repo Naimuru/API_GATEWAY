@@ -1,7 +1,6 @@
 import requests
 import os
 import json
-import dataclasses
 def generalRequest(url, method, body=None, full_response=False):
     headers = {'Content-Type': 'application/json'}
     if os.getenv('SHOW_URLS'):
